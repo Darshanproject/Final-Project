@@ -30,41 +30,149 @@ class ItemDetails extends StatelessWidget {
         ],
         title: title!.text.fontFamily(bold).color(darkFontGrey).make(),
       ),
-      body: Column(
-        children: [
-          Expanded(
-              child: Container(
-            padding: EdgeInsets.all(8),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // we will create swiper here
-                  VxSwiper.builder(
-                      autoPlay: true,
-                      height: 350,
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
-                        return Image.asset(
-                          imgFc5,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        );
-                      })
-                ],
-              ),
-            ),
-          )),
-          SizedBox(
-            width: double.infinity,
-            height: 60,
-            child: ourbuttom(
-                color: redColor,
-                onPress: () {},
-                textcolor: whiteColor,
-                title: "Add to Cart"),
-          )
-        ],
-      ),
+      body: Column(children: [
+        Expanded(
+            child: Container(
+                padding: EdgeInsets.all(8),
+                child: SingleChildScrollView(
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // we will create swiper here
+                        VxSwiper.builder(
+                            autoPlay: true,
+                            height: 350,
+                            itemCount: 3,
+                            itemBuilder: (context, index) {
+                              return Image.asset(
+                                imgFc5,
+                                width: double.infinity,
+                                fit: BoxFit.cover,
+                              );
+                            }),
+                        10.heightBox,
+                        //titile and details section
+                        title!.text
+                            .size(16)
+                            .color(darkFontGrey)
+                            .fontFamily(semibold)
+                            .make(),
+                        //ratting vx
+                        VxRating(
+                          onRatingUpdate: (value) {},
+                          normalColor: textfieldGrey,
+                          selectionColor: golden,
+                          size: 25,
+                          stepInt: true,
+                          count: 5,
+                        ),
+                        10.heightBox,
+                        "\$30,000"
+                            .text
+                            .color(redColor)
+                            .fontFamily(bold)
+                            .size(18)
+                            .make(),
+                        10.heightBox,
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(2),
+                              child: Expanded(
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                    "Seller"
+                                        .text
+                                        .white
+                                        .fontFamily(semibold)
+                                        .make(),
+                                    5.heightBox,
+                                    "In House Brands"
+                                        .text
+                                        .fontFamily(bold)
+                                        .color(darkFontGrey)
+                                        .size(16)
+                                        .make()
+                                  ])),
+                            ),
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              child: Icon(
+                                Icons.message_rounded,
+                                color: darkFontGrey,
+                              ),
+                            )
+                          ],
+                        )
+                            .box
+                            .height(60)
+                            .padding(EdgeInsets.symmetric(horizontal: 16))
+                            .color(textfieldGrey)
+                            .make(),
+                        20.heightBox,
+                        Column(
+                          children: [
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 100,
+                                  child: "Color :"
+                                      .text
+                                      .color(textfieldGrey)
+                                      .make(),
+                                ),
+                                Row(
+                                    children: List.generate(
+                                        3,
+                                        (index) => VxBox()
+                                            .size(40, 40)
+                                            .roundedFull
+                                            .color(Vx.randomPrimaryColor)
+                                            .margin(EdgeInsets.symmetric(
+                                                horizontal: 6))
+                                            .make())),
+                              ],
+                            ).box.padding(EdgeInsets.all(8)).make(),
+
+                            //quntity row
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 100,
+                                  child: "Color :"
+                                      .text
+                                      .color(textfieldGrey)
+                                      .make(),
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: Icon(Icons.remove),
+                                    ),
+                                    "0".text.size(16).color(darkFontGrey).make()
+                                  ],
+                                )
+                              ],
+                            ).box.white.shadowSm.make(),
+                          ],
+                        )
+                      ]),
+                ))),
+        SizedBox(
+          width: double.infinity,
+          height: 60,
+          child: ourbuttom(
+              color: redColor,
+              onPress: () {},
+              textcolor: whiteColor,
+              title: "Add to Cart"),
+        )
+      ]),
     );
   }
 }
