@@ -7,8 +7,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+class Cateogery_Screen extends StatelessWidget {
+  const Cateogery_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
